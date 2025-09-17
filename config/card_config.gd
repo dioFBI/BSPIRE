@@ -293,7 +293,7 @@ func _ready() -> void:
 			{ "cardId": "sagip-bahay", "quantity": 1 },
 			{ "cardId": "clear-debris", "quantity": 1 },
 			{ "cardId": "utang-na-loob", "quantity": 1 },
-			{ "cardId": "bayanihan-power", "quantity": 1 },
+			{ "cardId": "bayanihan-power", "quantity": 5 },
 			{ "cardId": "community-meeting", "quantity": 1 },
 			{ "cardId": "foresight", "quantity": 1 },
 			{ "cardId": "grit", "quantity": 1 },
