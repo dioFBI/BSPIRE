@@ -1,9 +1,8 @@
-[gd_scene load_steps=65 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=55 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
-[ext_resource type="Texture2D" uid="uid://c2dhog52nmy0d" path="res://assets/sprites/environment/earthquake.PNG" id="3_gh441"]
+[ext_resource type="Texture2D" uid="uid://d0b4wgtblfv14" path="res://assets/sprites/environment/Typhoon bg.png" id="3_216mg"]
 [ext_resource type="Texture2D" uid="uid://bk7viwnx0lkyp" path="res://assets/sprites/ui/gem.png" id="4_216mg"]
-[ext_resource type="Texture2D" uid="uid://ciwxlkj2lenx6" path="res://assets/sprites/entities/brownieidle.png" id="4_bhb63"]
 [ext_resource type="Script" uid="uid://6ck8gudoih7" path="res://scenes/gameplay/guardian.gd" id="4_elju3"]
 [ext_resource type="Script" uid="uid://dsxuujko2psys" path="res://scenes/gameplay/card_drop_box.gd" id="4_gh441"]
 [ext_resource type="Script" uid="uid://cc2eswgbls7mb" path="res://addons/godot_card_layout/layouts/hand_layout/gcard_hand_layout.gd" id="4_q64rj"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqrcnn6gcpa4i" path="res://assets/sprites/entities/brownieatk.png" id="5_216mg"]
 [ext_resource type="Script" uid="uid://df78gg7nff2u0" path="res://scenes/gameplay/Earthquake.gd" id="5_i6m2i"]
 [ext_resource type="PackedScene" uid="uid://b7aa3ii6qeid7" path="res://scenes/components/bayanihan_spirit.tscn" id="6_0w2j2"]
+[ext_resource type="Texture2D" uid="uid://c188sgkgmdkwv" path="res://assets/sprites/entities/Whitie.png" id="6_krs01"]
 [ext_resource type="Texture2D" uid="uid://5207rjqdlxk1" path="res://assets/sprites/entities/Character-idle-Sheet.png" id="8_pa1on"]
 [ext_resource type="Texture2D" uid="uid://d3ar2pj2ikdnw" path="res://assets/sprites/ui/Card back.png" id="11_216mg"]
 [ext_resource type="Texture2D" uid="uid://mharrfrhexak" path="res://assets/sprites/ui/holder.png" id="13_krs01"]
@@ -203,49 +203,9 @@ region = Rect2(728, 0, 91, 80)
 atlas = ExtResource("5_216mg")
 region = Rect2(819, 0, 91, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_216mg"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(0, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krs01"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(91, 0, 91, 80)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2eo0c"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(182, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pimn4"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(273, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moho6"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(364, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqtxl"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(455, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4rys"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(546, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kq854"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(637, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4haps"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(728, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cr05"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(819, 0, 91, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxh0i"]
-atlas = ExtResource("4_bhb63")
-region = Rect2(910, 0, 91, 80)
+atlas = ExtResource("6_krs01")
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6mtg"]
 animations = [{
@@ -286,37 +246,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_216mg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krs01")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_2eo0c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pimn4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moho6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uqtxl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r4rys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kq854")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4haps")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7cr05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxh0i")
 }],
 "loop": true,
 "name": &"idle",
@@ -383,13 +313,15 @@ script = ExtResource("5")
 [node name="Forest" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(579, 325.5)
 scale = Vector2(6.44444, 6.88298)
-texture = ExtResource("3_gh441")
+texture = ExtResource("3_216mg")
 metadata/_edit_lock_ = true
 
 [node name="Resilience Bar" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(585, 69)
 scale = Vector2(0.332329, 0.334677)
 sprite_frames = SubResource("SpriteFrames_p2e68")
+frame = 2
+frame_progress = 0.9491551
 
 [node name="Earthquake" type="Node2D" parent="CanvasLayer"]
 metadata/_edit_lock_ = true
@@ -400,17 +332,16 @@ position = Vector2(844.99994, 309)
 scale = Vector2(4.38496, 4.775)
 skew = 1.0646509
 sprite_frames = SubResource("SpriteFrames_c6mtg")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 script = ExtResource("5_i6m2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Earthquake"]
-position = Vector2(751, 252)
+position = Vector2(903, 266)
 scale = Vector2(4.38496, 4.775)
 sprite_frames = SubResource("SpriteFrames_c6mtg")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8749364
 script = ExtResource("5_i6m2i")
 
 [node name="Guardian" type="Node2D" parent="CanvasLayer"]
@@ -427,7 +358,7 @@ autoplay = "idle"
 frame_progress = 0.9725009
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Guardian"]
-position = Vector2(285.5, 407.5)
+position = Vector2(360.99997, 443.00003)
 scale = Vector2(3.29688, 2.98438)
 sprite_frames = SubResource("SpriteFrames_216mg")
 animation = &"idle"
@@ -471,10 +402,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 154.0
-offset_top = 48.0
-offset_right = 242.0
-offset_bottom = 112.0
+offset_left = 229.0
+offset_top = 86.0
+offset_right = 317.0
+offset_bottom = 150.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gh441")
@@ -635,10 +566,11 @@ theme_override_constants/separation = 20
 
 [node name="Resilience HP" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 145.0
-offset_top = 59.0
-offset_right = 168.0
-offset_bottom = 87.0
+offset_left = 156.0
+offset_top = 20.0
+offset_right = 224.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 60
 text = "20"
 
 [node name="Resilience Bar" type="TextureProgressBar" parent="CanvasLayer/Control"]
