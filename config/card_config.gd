@@ -1,20 +1,23 @@
 extends Node
 @export_enum("aksyon", "gabay", "kaalaman", "tulong", "rubble") var type: int
 # Card configuration data
-var config = {
-	"cardLibrary": [
-		{
-			"id": "collective-effort",
-			"name": "Collective Effort",
-			"type": 0,
-			"cost": 4,
-			"description": "Gain 5 Block. For the rest of this Day, all Block you gain is increased by 50%",
-			"effect": {
-				"block": 2
+var config: Dictionary = {}
+
+func _ready() -> void:
+	config = {
+		"cardLibrary": [
+			{
+				"id": "collective-effort",
+				"name": "Collective Effort",
+				"type": 0,
+				"cost": 4,
+				"description": "Gain 5 Block. For the rest of this Day, all Block you gain is increased by 50%",
+				"effect": {
+					"block": 2
+				},
+				"flavorText": "Sama-samang pagkilos, mas malakas na epekto.",
+				"art": "collective-effort.png"
 			},
-			"flavorText": "Sama-samang pagkilos, mas malakas na epekto.",
-			"art": "collective-effort.png"
-		},
 		{
 			"id": "divine-shield",
 			"name": "Divine Shield",
@@ -58,18 +61,6 @@ var config = {
 			"type": 3,
 			"cost": 4,
 			"description": "Resilience gen is immune to damage for 1 turn.",
-			"effect": {
-				"reinforced": 1
-			},
-			"flavorText": "",
-			"art": "sagip-bahay.png"
-		},
-		{
-			"id": "clear-debris",
-			"name": "Clear Debris",
-			"type": 3,
-			"cost": 4,
-			"description": "Resilience gem is immune to damage for 1 turn.",
 			"effect": {
 				"reinforced": 1
 			},
@@ -295,11 +286,20 @@ var config = {
 	],
 	"starterDecks": {
 		"basic": [
-			{ "cardId": "collective-effort", "quantity": 2 },
+			{ "cardId": "collective-effort", "quantity": 1 },
 			{ "cardId": "divine-shield", "quantity": 1 },
-			{ "cardId": "people-resolve", "quantity": 2 },
+			{ "cardId": "people-resolve", "quantity": 1 },
 			{ "cardId": "evacuation-order", "quantity": 1 },
-			{ "cardId": "sagip-bahay", "quantity": 1 }
+			{ "cardId": "sagip-bahay", "quantity": 1 },
+			{ "cardId": "clear-debris", "quantity": 1 },
+			{ "cardId": "utang-na-loob", "quantity": 1 },
+			{ "cardId": "bayanihan-power", "quantity": 1 },
+			{ "cardId": "community-meeting", "quantity": 1 },
+			{ "cardId": "fore-sight", "quantity": 1 },
+			{ "cardId": "grit", "quantity": 1 },
+			{ "cardId": "pagasa-report", "quantity": 1 },
+			{ "cardId": "scry", "quantity": 1 },
+			{ "cardId": "street-smart", "quantity": 1 }
 		],
 		"defensive": [
 			{ "cardId": "divine-shield", "quantity": 2 },
@@ -412,33 +412,41 @@ var config = {
 
 # Get a card by its ID
 func get_card(card_id: String) -> Dictionary:
-	for card in config.cardLibrary:
-		if card.id == card_id:
+	print("Looking for card with ID: ", card_id)
+	for card in config["cardLibrary"]:
+		print("Checking card: ", card)
+		if card["id"] == card_id:
+			print("Found matching card: ", card)
 			return card.duplicate()
+	print("Card not found: ", card_id)
 	return {}
 
 # Get all cards of a specific type
 func get_cards_by_type(card_type: String) -> Array:
 	var result = []
-	for card in config.cardLibrary:
-		if card.type == card_type:
+	for card in config["cardLibrary"]:
+		if card["type"] == card_type:
 			result.append(card.duplicate())
 	return result
 
 # Get a starter deck by name
 func get_starter_deck(deck_name: String) -> Array:
-	if deck_name in config.starterDecks:
-		return config.starterDecks[deck_name].duplicate()
+	print("Getting starter deck: ", deck_name)
+	print("Available decks: ", config["starterDecks"].keys())
+	if deck_name in config["starterDecks"]:
+		print("Found deck: ", config["starterDecks"][deck_name])
+		return config["starterDecks"][deck_name].duplicate()
+	print("Deck not found: ", deck_name)
 	return []
 
 # Get effect configuration
 func get_effect_config(effect_name: String) -> Dictionary:
-	if effect_name in config.cardEffects:
-		return config.cardEffects[effect_name].duplicate()
+	if effect_name in config["cardEffects"]:
+		return config["cardEffects"][effect_name].duplicate()
 	return {}
 
 # Get card type configuration
 func get_card_type_config(type_name: String) -> Dictionary:
-	if type_name in config.cardTypeConfig:
-		return config.cardTypeConfig[type_name].duplicate()
+	if type_name in config["cardTypeConfig"]:
+		return config["cardTypeConfig"][type_name].duplicate()
 	return {}

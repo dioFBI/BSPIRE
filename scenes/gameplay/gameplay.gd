@@ -20,30 +20,47 @@ var earthquake_setup_done: bool = false
 var days_left: int = 7
 
 func _ready() -> void:
+	# Add card_config to the scene tree to ensure _ready is called
+	add_child(card_config)
+	
 	# Build the deck (store plain data + preloaded texture if available)
+	print("=== Starting deck initialization ===")
 	var starter_deck = card_config.get_starter_deck("basic")
+	print("Starter deck data:", starter_deck)
+	
+	if starter_deck.is_empty():
+		push_error("Failed to load starter deck!")
+		return
+		
 	Globals.CURRENT_BAYANIHAN_SPIRIT = Globals.MAX_BAYANIHAN_SPIRIT
 	$CanvasLayer/Control/BayanihanSpirit/Spirit.text = str(Globals.CURRENT_BAYANIHAN_SPIRIT)
 	
 	for cardset in starter_deck:
+		print("\nProcessing cardset:", cardset)
 		var card_def = card_config.get_card(cardset["cardId"])
+		print("Card definition for ", cardset["cardId"], ": ", card_def)
+		
+		if card_def.is_empty():
+			push_error("Failed to load card: ", cardset["cardId"])
+			continue
+			
 		for _i in range(cardset["quantity"]):
 			var data := {
-				"name": card_def.name,
-				"id": card_def.id,
-				"description": card_def.description,
-				"type": card_def.type,
-				"cost": card_def.cost,
-				"effect": card_def.effect,
-				"flavorText": card_def.flavorText,
-				"art": null
+				"name": card_def["name"],
+				"id": card_def["id"],
+				"description": card_def["description"],
+				"type": card_def["type"],
+				"cost": card_def["cost"],
+				"effect": card_def["effect"],
+				"flavorText": card_def["flavorText"],
+				"art": card_def["art"] if card_def.has("art") else null
 			}
 			# try to load art (silently keep null if missing)
-			if card_def.art != null and str(card_def.art) != "":
-				var image_path: String = "res://assets/sprites/cards/" + str(card_def.art)
+			if card_def.has("art") and card_def["art"] != null and str(card_def["art"]) != "":
+				var image_path: String = "res://assets/sprites/cards/" + str(card_def["art"])
 				var tex: Resource = load(image_path)
 				if tex is Texture2D:
-					data.art = tex
+					data["art"] = tex
 				else:
 					push_warning("Could not load texture: " + image_path)
 			deck.append(data)
@@ -375,8 +392,11 @@ func update_resilience_display(val: int) -> void:
 	# Clamp to valid range to avoid UI glitches
 	var clamped := clampi(val, 0, Globals.MAX_RESILIENCE)
 	# Keep AnimatedSprite2D-based Resilience Bar in sync (compat with existing API)
+	# Frame 0 = full health, max_frames-1 = empty
 	if has_node("CanvasLayer/Resilience Bar"):
-		$"CanvasLayer/Resilience Bar".set_frame_and_progress(clamped, 10)
+		var max_frames = $"CanvasLayer/Resilience Bar".sprite_frames.get_frame_count("default")
+		var frame = max_frames - 1 - int((float(clamped) / Globals.MAX_RESILIENCE) * (max_frames - 1))
+		$"CanvasLayer/Resilience Bar".frame = clamp(frame, 0, max_frames - 1)
 	# Update the text label to show the real, clamped value
 	if has_node("CanvasLayer/Control/Resilience HP"):
 		$"CanvasLayer/Control/Resilience HP".text = str(clamped)
