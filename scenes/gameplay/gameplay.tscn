@@ -360,11 +360,15 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh441"]
-bg_color = Color(0.40833, 0.408329, 0.408329, 1)
-corner_radius_top_left = 25
+bg_color = Color(0.9083582, 0.4968757, 9.62615e-07, 1)
+border_width_left = 10
+border_width_top = 3
+border_width_right = 10
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 11
 corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+corner_radius_bottom_left = 20
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("5")
@@ -461,14 +465,15 @@ metadata/_edit_lock_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/CardDropBox"]
 clip_children = 2
+visibility_layer = 2
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 177.0
-offset_top = 53.0
-offset_right = 265.0
-offset_bottom = 117.0
+offset_left = 158.0
+offset_top = 24.0
+offset_right = 271.0
+offset_bottom = 88.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gh441")
