@@ -389,8 +389,8 @@ frame_progress = 0.9491551
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CanvasLayer/Earthquake"]
-modulate = Color(0, 0, 0, 0.25490198)
-position = Vector2(844.99994, 309)
+modulate = Color(0, 0, 0, 0.47058824)
+position = Vector2(1035, 409)
 scale = Vector2(4.38496, 4.775)
 skew = 1.0646509
 sprite_frames = SubResource("SpriteFrames_c6mtg")
@@ -399,7 +399,7 @@ autoplay = "idle"
 script = ExtResource("5_i6m2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Earthquake"]
-position = Vector2(931.00006, 304.00003)
+position = Vector2(910, 309.00003)
 scale = Vector2(4.8748336, 5.340442)
 sprite_frames = SubResource("SpriteFrames_c6mtg")
 animation = &"idle"
